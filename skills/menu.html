@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Dancing+Script');/*google font*/
+    </style>
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Crimson+Text');
+    </style>
+    <link href="../css/layout.css" rel="stylesheet" type="text/css">
+    <style media="screen">
+      #wrapper{
+        background-color: #575757;
+      }
+      .contain{
+        width:200px;
+        text-align: center;
+        background-color: black;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .tab1{
+        background-color: red;
+        border: solid black;
+        padding: 8px;
+        cursor: pointer;
+      }
+      .tab3{
+        background-color: red;
+        border: solid black;
+        padding: 8px;
+        cursor: pointer;
+      }
+      .tab2{
+        background-color: red;
+        border: solid black;
+        padding: 8px;
+        cursor: pointer;
+      }
+      .tab4{
+        background-color: red;
+        border: solid black;
+        padding: 8px;
+        cursor: pointer;
+      }
+      .tab1info{
+        color: white;
+      }
+      .tab2info{
+        color: white;
+      }
+      .tab3info{
+        color: white;
+      }
+      .tab4info{
+        color: white;
+        padding-bottom: 5px;
+      }
+    </style>
+    <title>Tabs</title>
+  </head>
+  <body>
+<div id="wrapper">
+<div class="contain">
+<div class="tab1">Tab 1</div>
+  <div class="tab1info">
+    <p>This is tab 1.</p>
+  </div>
+<!--tab1-->
+  <div class="tab2">Tab 2</div>
+    <div class="tab2info">
+      <p>This is tab 2.</p>
+    </div>
+<!--tab2-->
+<div class="tab3">Tab 3</div>
+  <div class="tab3info">
+    <p>This is tab 3.</p>
+  </div>
+<!--tab3-->
+<div class="tab4">Tab 4</div>
+  <div class="tab4info">
+    <p>This is tab 4.</p>
+  </div>
+<!--tab4-->
+</div>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+					  $(".tab1info").show();
+					  });
+	$(document).ready(function(){
+					  $(".tab2info").hide();
+					  });
+	$(document).ready(function(){
+					  $(".tab3info").hide();
+					  });
+$(document).ready(function(){
+            $(".tab4info").hide();
+          	});
+
+            //tabs are set to load tab 1 and not show the others
+	$(".tab1").click(function(){
+			$(".tab1info").show();
+		 $(".tab2info").slideUp(200);
+		 $(".tab3info").slideUp(200);
+     $(".tab4info").slideUp(200);
+	 });
+	$(".tab2").click(function(){
+			$(".tab2info").show();
+		$(".tab1info").slideUp(200);
+		$(".tab3info").slideUp(200);
+    $(".tab4info").slideUp(200);
+	});
+	$(".tab3").click(function(){
+			$(".tab3info").show();
+		$(".tab1info").slideUp(200);
+		$(".tab2info").slideUp(200);
+    $(".tab4info").slideUp(200);
+	});
+  $(".tab4").click(function(){
+			$(".tab4info").show();
+		$(".tab1info").slideUp(200);
+		$(".tab2info").slideUp(200);
+    $(".tab3info").slideUp(200);
+	});
+  //when one tab opens, the others close
+	</script>
+
+</html>

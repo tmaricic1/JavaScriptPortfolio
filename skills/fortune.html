@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Dancing+Script');/*google font*/
+    </style>
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Crimson+Text');
+    </style>
+    <style media="screen">
+      #wrapper{
+        background-image: url("../skillimgs/fortuneback.jpg");
+        color: white;
+      }
+      p{
+        padding-bottom: 20px;
+        font-size: 20px;
+      }
+    </style>
+    <link href="../css/layout.css" rel="stylesheet" type="text/css">
+    <title>Fortune Teller</title>
+  </head>
+  <body>
+    <div id="wrapper">
+      <center><h1>Please Click The button Below To View Your Fortune!</h1>
+        <br>
+        <button type="button" onclick="fortune()"name="button">Click Here!</button>
+        <br>
+        <p id="fhere">...</p>
+    </div>
+  </body>
+  <script type="text/javascript">
+function fortune(){
+  var fortunearray = [
+  'You will become rich.',
+  'You will meet someone special soon.',
+  'Prepare for a suprise soon.',
+  'You will have good fortune today.',
+  'You will soon get what you always wanted.',
+  'You will soon hire a valuable employee.'
+];//array
+var random = Math.floor(Math.random()*fortunearray.length);//array length
+document.getElementById('fhere').textContent = fortunearray[random].split()[0];//sets random fortune in fhere
+}
+  </script>
+</html>

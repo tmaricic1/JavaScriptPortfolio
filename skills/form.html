@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Dancing+Script');/*google font*/
+    </style>
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Crimson+Text');
+    </style>
+    <title>Form</title>
+    <link href="../css/layout.css" rel="stylesheet" type="text/css">
+    <script>
+function ValidateForm() {
+	var phone = document.getElementById('phone');
+  var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;//checks for 10 digits
+	var email = document.getElementById('email');
+ var emaila = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;//Checks for @ sign, . and at least 2 or 3 numbers after the period
+ var elements = [document.getElementById('first-name'), document.getElementById('last-name'), document.getElementById('prev-vol')];
+ for (var i = 0; i < elements.length; i+0) {
+	 if(phone.value.match(phoneno) && email.value.match(emaila) && elements[i].value != ''){
+		 		alert('Thank you');
+				return true;
+      }//All items match and are inputed correctly
+			 else{
+				 alert("Please enter valid information and/or make sure information was given in all required feilds.");
+				 return false;
+			 }
+		 }
+		};
+    </script>
+    <style media="screen">
+      h1{
+        text-align: center;
+      }
+      form{
+        text-align: center;
+      }
+      p{
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+<div id="container">
+<h1>Please Enter The Following Information</h1>
+<p>* Indicates required feild.</p>
+<div class="form">
+  <form id="form">
+    <label for="first-name">*First Name:</label>
+		<input id="first-name" name="first-name" type="text"><br> <br>
+    <label for="last-name">Last Name:</label>
+		<input id="last-name" name="last-name" type="text"><br> <br>
+    <label for="email">*Email:</label>
+		<input id="email" name="email" type="email"><br> <br>
+    <label for="phone">*Phone:</label>
+		<input id="phone" name="phone" type="tel"><br> <br>
+    <button type="button" onclick="ValidateForm()">Submit</button>
+  </form>
+</div>
+</div>
+</div>
+  </body>
+</html>

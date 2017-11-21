@@ -1,0 +1,9 @@
+#column{
+  width:800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#chart{
+  width: 500px;
+  height:300px;
+}

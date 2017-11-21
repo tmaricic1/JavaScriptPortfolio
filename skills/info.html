@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Dancing+Script');/*google font*/
+    </style>
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Crimson+Text');
+    </style>
+    <style media="screen">
+      .holder{
+      overflow: auto;
+       }
+      .img{
+        float: left;
+        width: 15%;
+        padding-left: 150px;
+        padding-bottom: 20px;
+      }
+      .info{
+        float: right;
+        width:60%;
+        padding-right: 150px;
+      }
+    </style>
+    <link href="../css/layout.css" rel="stylesheet" type="text/css">
+    <title>Info</title>
+  </head>
+  <body>
+    <div id="wrapper">
+<center><h1>Please Choose A Computer</h1>
+<select id="pc">
+	<option value="blank">Choose A Computer</option>
+	<option value="pc1">Macbook Pro 13 inch</option>
+	<option value="pc2">Microsoft Surface Pro</option>
+	<option value="pc3">Alienware 13 laptop</option>
+	<option value="pc4">iMac 2017 4k</option>
+	<option value="pc5">Alienware X51</option>
+	<option value="pc6">iBuyPower AMD Ryzen 7X Configuration</option>
+</select>
+<br><br>
+<div class="holder">
+<div class="img">
+<img id="comppic" width="300" height="300">
+</div><!--img spot-->
+<div class="info">
+<p><strong>PC: </strong><span id="pcname"></span></p>
+<p><strong>Display: </strong><span id="display"></span></p>
+<p><strong>CPU(Processor): </strong><span id="cpu"></span></p>
+<p><strong>RAM(Memory): </strong><span id="ram"></span></p>
+<p><strong>Motherboard: </strong><span id="motherboard"></span></p>
+<p><strong>GPU(Graphics): </strong><span id="gpu"></span></p>
+</center>
+</div><!--info close-->
+</div><!--holder close-->
+</div><!--wrapper close-->
+  </body>
+  <script type="text/javascript" src="../javascript/pcinfo.js"></script><!--info list-->
+  <script type="text/javascript">
+  document.getElementById("pc").onchange= function() {
+  var computerc= this.value;//sets the value of the chosen option
+  document.getElementById('comppic').src= '../pcimgs/'+computerc+'.png';//picks img from folder to match option
+  document.getElementById("pcname").textContent= pcinfo[this.value].pcname;//info all down
+  document.getElementById("display").textContent= pcinfo[this.value].display;
+  document.getElementById("cpu").textContent= pcinfo[this.value].cpu;
+  document.getElementById("ram").textContent= pcinfo[this.value].ram;
+  document.getElementById("motherboard").textContent= pcinfo[this.value].motherboard;
+  document.getElementById("gpu").textContent= pcinfo[this.value].gpu;
+};
+  </script>
+</html>

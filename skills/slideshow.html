@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Slideshow</title>
+    <link href="../css/layout.css" rel="stylesheet" type="text/css">
+    <style media="screen">
+    #wrapper{
+      width:1000px;
+    }
+    .Slide img {
+      width: 100%;
+      height: 450px;
+    }
+    .Slideshow {
+        position: relative;
+        padding: 0px;
+        margin: 0px;
+        list-style-type: none;
+    }
+
+    .Slide {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 200px;
+        opacity: 0;
+        z-index: auto;
+        -webkit-transition: opacity 1.5s;
+        -moz-transition: opacity 1.5s;
+        -o-transition: opacity 1.5s;
+        transition: opacity 1.5s;
+    }
+
+    .first {
+        opacity: 1;
+        z-index: 2;
+    }
+    }
+    #clear{
+       width: 100%;
+       height: 550px;
+       float: left;
+       display: inline-block;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+    <div id="clear">
+     <div class="Slideshow">
+    	<div class="Slide first">
+    	 <img src="../slideskillimgs/tree.jpg">
+    	 </div>
+    	 <div class="Slide">
+    	 <img src="../slideskillimgs/line.jpg">
+    	 </div>
+    	 <div class="Slide">
+    	 <img src="../slideskillimgs/hex.jpg">
+    	 </div>
+    	 <div class="Slide">
+    	 <img src="../slideskillimgs/flame.jpg">
+    	 </div>
+     </div><!--Slide close-->
+   </div><!--fix top-->
+ </div><!--wrapper close-->
+  </body>
+  <script type="text/javascript">
+  var slide=document.querySelectorAll('.Slideshow .Slide');//gets slides
+  var showing=0;
+  var time=setInterval(nextSlide,3000);//sets time to 3 seconds per switch
+  function nextSlide() {
+      slide[showing].className='Slide';
+      showing=(showing+1)%slide.length;
+      slide[showing].className='Slide first';
+  }//changes slides
+  </script>
+</html>

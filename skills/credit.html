@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Credit Card Validation</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Dancing+Script');/*google font*/
+    </style>
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Crimson+Text');
+    </style>
+    <link href="../css/layout.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+<div id="wrapper">
+<center><h1>Please Enter A Credit Card Number</h1>
+  <h2>Make sure last digit is even.</h2>
+<input type="text" id="number"><br><br>
+<button type="button" onclick= 'validateCreditCard()'>Validate</button></center>
+</div>
+  </body>
+  <script>
+    var digits=/^(?:\D*\d){15,16}\D*$/;//checks for 16 digits
+    var nol=/(^\d+$)|(^\d+\.\d+$)/;
+    var diffd=/(\d)((?!\1)\d)((?!\1)\d)((?!\1)\d)((?!\1)\d)((?!\1)\d)((?!\1)\d)((?!\1)\d)+/;//checks for different digits
+    var lastd=/^(\s*\d*[02468]\s*,)*(\s*\d*[02468]\s*)$/;//last number even
+    var cono=/^(?!.*0{5}.*)([1-9][0-9]{14,16})$/;
+    var conf=/^(?!.*1{5}.*)([1-9][0-9]{14,16})$/;
+    function validateCreditCard(creditn){
+    var cardn = document.getElementById('number').value;//get value from input
+    var creditn = cardn;
+    if ((digits.test(creditn)) && (nol.test(creditn)) && (diffd.test(creditn)) &&(lastd.test(creditn)) && (cono.test(creditn)) && (conf.test(creditn))){
+    alert('Thank you');
+  }//if it passes all tests alert thank you
+    else{
+    alert('Invalid Number');
+  }//else invalid
+    };
+</script>
+
+</html>

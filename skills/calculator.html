@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="css/layout.css" rel="stylesheet" type="text/css">
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Dancing+Script');/*google font*/
+    </style>
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Crimson+Text');
+    </style>
+    <style media="screen">
+body{
+background-color: grey;
+}
+#calc{
+width: 350px;
+height: 250px;
+margin: 100px auto;
+padding: 15px 15px 10px;
+background: darkred;
+border-radius: 8px;
+box-shadow: 5px 5px grey, 0px 10px 20px rgba(0, 0, 0, 0.5);
+}
+.top .display {
+height: 38px;
+width: 220px;
+float: right;
+padding: 0 10px;
+background: rgba(0, 0, 0, 0.2);
+border-radius: 5px;
+box-shadow: inset 0px 4px rgba(0, 0, 0, 0.2);
+font-size: 10px;
+line-height: 30px;
+color: white;
+text-align: right;
+letter-spacing: 1px;
+}
+.top span.clear {
+float: left;
+}
+.buttons span, .top span.clear {
+float: left;
+position: relative;
+top: 0;
+cursor: pointer;
+width: 65px;
+height: 35px;
+background: white;
+border-radius: 5px;
+box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
+margin: 0 7px 11px 0;
+color: black;
+line-height: 35px;
+text-align: center;
+user-select: none;
+transition: all 0.5s ease;
+}
+.buttons, .top {overflow: hidden;}
+.buttons span.eval {
+background: yellow;
+box-shadow: 0px 4px grey;
+color: black;
+}
+.buttons span.clear {
+background: grey;
+box-shadow: 0px 4px grey;
+}
+.buttons span:hover {
+background: grey;
+color: darkred;
+}
+.buttons span.clear:hover {
+background: grey;
+color: darkred;
+}
+.buttons span.eval:hover {
+background: grey;
+color: darkred;
+}
+.buttons span.pemdas {
+background: grey;
+margin-right: 0;
+}
+    </style>
+    <title>Calculator</title>
+  </head>
+  <body>
+<div id="wrapper">
+  <div id="calc">
+	<div class="top">
+		<span class="clear">C</span>
+		<div class="display"></div>
+	</div>
+	<div class="buttons">
+		<span>7</span>
+		<span>8</span>
+		<span>9</span>
+		<span class="pemdas">+</span>
+		<span>4</span>
+		<span>5</span>
+		<span>6</span>
+		<span class="pemdas">-</span>
+		<span>1</span>
+		<span>2</span>
+		<span>3</span>
+		<span class="pemdas">÷</span>
+		<span>0</span>
+		<span>.</span>
+		<span class="eval">=</span>
+		<span class="pemdas">x</span>
+	</div><!--buttons close-->
+</div><!--calc close-->
+</div><!--wrapper close-->
+  </body>
+  <script type="text/javascript">
+  var button = document.querySelectorAll('#calc span');
+  var pemdas = ['+', '-', 'x', '÷'];
+  var decimalAdded = false;
+//get values
+  for(var i = 0; i < button.length; i++) {
+  	button[i].onclick = function(e) {
+  		//values and button functions
+  		var input = document.querySelector('.display');
+  		var inputvalue = input.innerHTML;
+  		var buttonv = this.innerHTML;
+  		if(buttonv == 'C') {
+  			input.innerHTML = '';
+  			decimalAdded = false;
+  		}
+//c = clear value
+  		else if(buttonv == '=') {
+  			var equation = inputvalue;
+  			var lastc = equation[equation.length - 1];
+//eval=display results
+  			equation = equation.replace(/x/g, '*').replace(/÷/g, '/');
+  			if(pemdas.indexOf(lastc) > -1 || lastc == '.')
+  				equation = equation.replace(/.$/, '');
+//last character
+  			if(equation)
+  				input.innerHTML = eval(equation);
+  			decimalAdded = false;
+  		}
+  		else if(pemdas.indexOf(buttonv) > -1) {
+  			// Operator is clicked
+  			var lastc = inputvalue[inputvalue.length - 1];
+//get last character
+  			if(inputvalue != '' && pemdas.indexOf(lastc) == -1)
+  				input.innerHTML += buttonv;
+//check for no operator at the end
+  			else if(inputvalue == '' && buttonv == '-')
+  				input.innerHTML += buttonv;
+//- input allowed even if there is no character present
+  			if(pemdas.indexOf(lastc) > -1 && inputvalue.length > 1) {
+  				input.innerHTML = inputvalue.replace(/.$/, buttonv);
+  			}
+  			decimalAdded =false;
+  		}
+  		else if(buttonv == '.') {
+  			if(!decimalAdded) {
+  				input.innerHTML += buttonv;
+  				decimalAdded = true;
+  			}
+  		}
+  		else {
+  			input.innerHTML += buttonv;
+  		}
+//append
+  		e.preventDefault();
+  	}
+  }//page jump
+  </script>
+</html>
